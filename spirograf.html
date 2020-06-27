@@ -15,7 +15,46 @@
         <div class="app-container">
             <div class="options-panel">
                 <div class="options-text">OPTIONS</div>
-                <div class="options-content"></div>
+                <div class="options-content">
+                    <div class="options-content-container-1">
+                        <button class="options-content-button">START</button>
+                        <button class="options-content-button">STOP</button>
+                        <button class="options-content-button">RESET</button>
+                    </div>
+                    <div class="options-content-container-2">
+                        <div class="options-content-header-container">
+                            <label class="options-content-text">STATIONARY RADIUS</label>
+                            <input class="options-content-value-1" type="text" value="30">
+                        </div>
+                        <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-1');"></input>
+                    </div>
+                    <div class="options-content-container-2">
+                        <div class="options-content-header-container">
+                            <label class="options-content-text">ROTATOR RADIUS</label>
+                            <input class="options-content-value-2" type="text" id="textInput" value="30">
+                        </div>
+                        <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-2');"></input>
+                    </div>
+                    <div class="options-content-container-2">
+                        <div class="options-content-header-container">
+                            <label class="options-content-text">SPEED</label>
+                            <input class="options-content-value-3" type="text" id="textInput" value="30">
+                        </div>
+                        <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-3');"></input>
+                    </div>
+                    <div class="options-content-container-1">
+                        <label class="options-content-text">SPIRAL COUNT</label>
+                        <input class="options-content-input-element-inline" type="number" min="10" max="999" step="10" value="30"></input>
+                    </div>
+                    <div class="options-content-container-1">
+                        <label class="options-content-text">COLOR</label>
+                        <input class="options-content-input-element-inline" type="color"></input>
+                    </div>
+<!-- TODO add BASE SHAPE SELECTOR -->
+<!-- TODO add INNER CX CY -->
+<!-- TODO add OUTER CX CY -->
+<!-- TODO add toggle inner/outer -->
+                </div>
             </div>
             <div class="display-panel">
                 <div class="display-text">GRAF</div>

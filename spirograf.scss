@@ -3,6 +3,7 @@ $element-col: #44444C;
 $elemented-selected-col: #8C8C8C;
 $text-col: #D6D6D6;
 
+
 body {
     background: $background-col;
     font-family: 'Roboto', sans-serif;
@@ -16,6 +17,7 @@ body {
     margin: 1em 0em;
 }
 
+
 .title-panel {
     display: flex;
     justify-content: center;
@@ -27,10 +29,12 @@ body {
     color: $text-col;
     width: 90%;
     padding: .75em 0em;
+    border: 1px solid $text-col;
     border-radius: .25em;
     text-align: center;
     font-size: 1.75em;
 }
+
 
 .app-container {
     display: flex;
@@ -38,11 +42,12 @@ body {
     margin: 1em 0em 0em;
 }
 
+
 .options-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 33%;
+    width: 24%;
     padding: 1em;
     border-right: 1px solid $element-col;
 }
@@ -52,14 +57,63 @@ body {
     color: $text-col;
     width: 75%;
     padding: .25em 0em;
+    border: 1px solid $text-col;
     border-radius: .5em;
     text-align: center;
     font-size: 1.25em;
 }
 
 .options-content {
-    height: 75vh;
+    display: flex;
+    flex-direction: column;
 }
+
+.options-content-container-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1.75em 0em 0em;
+}
+
+.options-content-button {
+    background-color: $element-col;
+    color: $text-col;
+    padding: .5em 1em;
+    border: 1px solid $text-col;
+    border-radius: .25em;
+    margin: 0em .5em;
+}
+
+.options-content-container-2 {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75em 0em 0em;
+}
+
+ .options-content-header-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-end;
+ }
+
+.options-content-text {
+    color: $text-col;
+}
+
+.options-content-value-1, .options-content-value-2, .options-content-value-3 {
+    width: 3em;
+    text-align: center;
+}
+
+.options-content-input-element {
+    margin: .75em 0em 0em;
+    text-align: right;
+}
+
+.options-content-input-element-inline {
+    text-align: right;
+}
+
 
 .display-panel {
     display: flex;
@@ -74,11 +128,12 @@ body {
     color: $text-col;
     width: 75%;
     padding: .25em 0em;
+    border: 1px solid $text-col;
     border-radius: .5em;
     text-align: center;
     font-size: 1.25em;
 }
 
-.display-content {
-    height: 75vh;
-}
+// .display-content {
+
+// }

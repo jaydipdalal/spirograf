@@ -19,6 +19,7 @@ body {
   color: #D6D6D6;
   width: 90%;
   padding: .75em 0em;
+  border: 1px solid #D6D6D6;
   border-radius: .25em;
   text-align: center;
   font-size: 1.75em; }
@@ -32,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33%;
+  width: 24%;
   padding: 1em;
   border-right: 1px solid #44444C; }
 
@@ -41,12 +42,52 @@ body {
   color: #D6D6D6;
   width: 75%;
   padding: .25em 0em;
+  border: 1px solid #D6D6D6;
   border-radius: .5em;
   text-align: center;
   font-size: 1.25em; }
 
 .options-content {
-  height: 75vh; }
+  display: flex;
+  flex-direction: column; }
+
+.options-content-container-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.75em 0em 0em; }
+
+.options-content-button {
+  background-color: #44444C;
+  color: #D6D6D6;
+  padding: .5em 1em;
+  border: 1px solid #D6D6D6;
+  border-radius: .25em;
+  margin: 0em .5em; }
+
+.options-content-container-2 {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75em 0em 0em; }
+
+.options-content-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+
+.options-content-text {
+  color: #D6D6D6; }
+
+.options-content-value-1, .options-content-value-2, .options-content-value-3 {
+  width: 3em;
+  text-align: center; }
+
+.options-content-input-element {
+  margin: .75em 0em 0em;
+  text-align: right; }
+
+.options-content-input-element-inline {
+  text-align: right; }
 
 .display-panel {
   display: flex;
@@ -60,11 +101,9 @@ body {
   color: #D6D6D6;
   width: 75%;
   padding: .25em 0em;
+  border: 1px solid #D6D6D6;
   border-radius: .5em;
   text-align: center;
   font-size: 1.25em; }
-
-.display-content {
-  height: 75vh; }
 
 /*# sourceMappingURL=spirograf.css.map */
