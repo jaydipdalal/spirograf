@@ -1,0 +1,84 @@
+$background-col: #0B0909;
+$element-col: #44444C;
+$elemented-selected-col: #8C8C8C;
+$text-col: #D6D6D6;
+
+body {
+    background: $background-col;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 1em 0em;
+}
+
+.title-panel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.title-text {
+    background-color: $element-col;
+    color: $text-col;
+    width: 90%;
+    padding: .75em 0em;
+    border-radius: .25em;
+    text-align: center;
+    font-size: 1.75em;
+}
+
+.app-container {
+    display: flex;
+    border: 1px solid $element-col;
+    margin: 1em 0em 0em;
+}
+
+.options-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+    padding: 1em;
+    border-right: 1px solid $element-col;
+}
+
+.options-text {
+    background-color: $element-col;
+    color: $text-col;
+    width: 75%;
+    padding: .25em 0em;
+    border-radius: .5em;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.options-content {
+    height: 75vh;
+}
+
+.display-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 1em;
+}
+
+.display-text {
+    background-color: $element-col;
+    color: $text-col;
+    width: 75%;
+    padding: .25em 0em;
+    border-radius: .5em;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.display-content {
+    height: 75vh;
+}
