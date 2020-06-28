@@ -134,6 +134,14 @@ body {
     font-size: 1.25em;
 }
 
-// .display-content {
+.display-content {
+    padding: 1em 0em 0em;
+}
 
-// }
+.display-content-container {
+}
+
+.display-canvas {
+    background-color: $elemented-selected-col;
+    border: 1px solid $text-col;
+}
