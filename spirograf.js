@@ -38,17 +38,21 @@ function updateTextInput(val, type) {
 // };
 
 
+// SETUP global initializations
+
+var canvas = document.getElementById("display-canvas");
+var ctx = canvas.getContext("2d");
+
+let baseCircle = { radius: canvas.width / 3, cx: canvas.width / 2, cy: canvas.height / 2};
+
+let rotatorCircle = { radius: baseCircle.radius / 3 }
+rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
+
+
 // TEST draw initial circles
 
 function reset_drawing() {
-    var canvas = document.getElementById("display-canvas");
-    var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    let baseCircle = { radius: canvas.width / 3, cx: canvas.width / 2, cy: canvas.height / 2};
-
-    let rotatorCircle = { radius: baseCircle.radius / 3 }
-    rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
 
     ctx.beginPath();
     ctx.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
