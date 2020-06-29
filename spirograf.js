@@ -38,13 +38,19 @@ function updateTextInput(val, type) {
 // };
 
 
-// TEST draw initial circle
+// TEST draw initial circles
 
 function reset_drawing() {
     var canvas = document.getElementById("display-canvas");
     var ctx = canvas.getContext("2d");
+
     ctx.beginPath();
-    ctx.arc(450, 450, 150, 0, 2 * Math.PI);
+    ctx.arc(450, 450, 300, 0, 2 * Math.PI);
     // ctx.strokeStyle = "#00FF00";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(450 + 150 + 75, 450, 75, 0, 2 * Math.PI);
+    // ctx.strokeStyle = "#0000FF";
     ctx.stroke();
 };
