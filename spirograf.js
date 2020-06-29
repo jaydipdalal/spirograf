@@ -41,21 +41,17 @@ function updateTextInput(val, type) {
 // TEST draw initial circles
 
 function reset_drawing() {
-    let canvasWidth = 900;
-    let canvasHeight = 900;
-    
-    let baseCircleRadius = canvasWidth / 3;
-    let baseCircleCX = canvasWidth / 2;
-    let baseCircleCY = canvasHeight / 2;
+    var canvas = document.getElementById("display-canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let baseCircleRadius = canvas.width / 3;
+    let baseCircleCX = canvas.width / 2;
+    let baseCircleCY = canvas.height / 2;
 
     let rotatorCircleRadius = baseCircleRadius / 3;
     let rotatorCircleCX = baseCircleCX + baseCircleRadius - rotatorCircleRadius;
     let rotatorCircleCY = baseCircleCY;
-
-    var canvas = document.getElementById("display-canvas");
-    var ctx = canvas.getContext("2d");
-
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     ctx.beginPath();
     ctx.arc(baseCircleCX, baseCircleCY, baseCircleRadius, 0, 2 * Math.PI);
