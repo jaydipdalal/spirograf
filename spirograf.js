@@ -41,16 +41,29 @@ function updateTextInput(val, type) {
 // TEST draw initial circles
 
 function reset_drawing() {
+    let canvasWidth = 900;
+    let canvasHeight = 900;
+    
+    let baseCircleRadius = canvasWidth / 3;
+    let baseCircleCX = canvasWidth / 2;
+    let baseCircleCY = canvasHeight / 2;
+
+    let rotatorCircleRadius = baseCircleRadius / 3;
+    let rotatorCircleCX = baseCircleCX + baseCircleRadius - rotatorCircleRadius;
+    let rotatorCircleCY = baseCircleCY;
+
     var canvas = document.getElementById("display-canvas");
     var ctx = canvas.getContext("2d");
 
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
     ctx.beginPath();
-    ctx.arc(450, 450, 300, 0, 2 * Math.PI);
+    ctx.arc(baseCircleCX, baseCircleCY, baseCircleRadius, 0, 2 * Math.PI);
     // ctx.strokeStyle = "#00FF00";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(450 + 150 + 75, 450, 75, 0, 2 * Math.PI);
+    ctx.arc(rotatorCircleCX, rotatorCircleCY, rotatorCircleRadius, 0, 2 * Math.PI);
     // ctx.strokeStyle = "#0000FF";
     ctx.stroke();
 };
