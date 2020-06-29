@@ -64,3 +64,29 @@ function reset_drawing() {
     // ctx.strokeStyle = "#0000FF";
     ctx.stroke();
 };
+
+
+// TEST draw rotating circle
+
+function start_drawing() {
+    let time = new Date();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.beginPath();
+    ctx.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
+    ctx.stroke();
+    
+    ctx.save();
+    
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate( (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds()) );
+    ctx.translate(baseCircle.radius - rotatorCircle.radius, 0);
+
+    ctx.beginPath();
+    ctx.arc(0, 0, rotatorCircle.radius, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    ctx.restore();
+
+    window.requestAnimationFrame(start_drawing);
+}
