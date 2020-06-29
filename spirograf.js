@@ -45,21 +45,18 @@ function reset_drawing() {
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let baseCircleRadius = canvas.width / 3;
-    let baseCircleCX = canvas.width / 2;
-    let baseCircleCY = canvas.height / 2;
+    let baseCircle = { radius: canvas.width / 3, cx: canvas.width / 2, cy: canvas.height / 2};
 
-    let rotatorCircleRadius = baseCircleRadius / 3;
-    let rotatorCircleCX = baseCircleCX + baseCircleRadius - rotatorCircleRadius;
-    let rotatorCircleCY = baseCircleCY;
+    let rotatorCircle = { radius: baseCircle.radius / 3 }
+    rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
 
     ctx.beginPath();
-    ctx.arc(baseCircleCX, baseCircleCY, baseCircleRadius, 0, 2 * Math.PI);
+    ctx.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
     // ctx.strokeStyle = "#00FF00";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(rotatorCircleCX, rotatorCircleCY, rotatorCircleRadius, 0, 2 * Math.PI);
+    ctx.arc(rotatorCircle.cx, rotatorCircle.cy, rotatorCircle.radius, 0, 2 * Math.PI);
     // ctx.strokeStyle = "#0000FF";
     ctx.stroke();
 };
