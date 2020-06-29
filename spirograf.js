@@ -6,22 +6,22 @@ function updateTextInput(val, type) {
 
 // // TEST draw pixel
 
-// let canvas = document.getElementById("display-canvas");
-// let canvasWidth = canvas.width;
-// let canvasHeight = canvas.height;
-// let ctx = canvas.getContext("2d");
-// let canvasData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+// let canvasBase = document.getElementById("display-canvasBase");
+// let canvasBaseWidth = canvasBase.width;
+// let canvasBaseHeight = canvasBase.height;
+// let ctx = canvasBase.getContext("2d");
+// let canvasBaseData = ctx.getImageData(0, 0, canvasBaseWidth, canvasBaseHeight);
 
 // function drawPixel(x, y, r, g, b, a) {
-//     let index = (x + y * canvasWidth) * 4;
-//     canvasData.data[index + 0] = r;
-//     canvasData.data[index + 1] = g;
-//     canvasData.data[index + 2] = b;
-//     canvasData.data[index + 3] = a;
+//     let index = (x + y * canvasBaseWidth) * 4;
+//     canvasBaseData.data[index + 0] = r;
+//     canvasBaseData.data[index + 1] = g;
+//     canvasBaseData.data[index + 2] = b;
+//     canvasBaseData.data[index + 3] = a;
 // };
 
-// function updateCanvas() {
-//     ctx.putImageData(canvasData, 0, 0);
+// function updateCanvasBase() {
+//     ctx.putImageData(canvasBaseData, 0, 0);
 // };
 
 // function draw_test() {
@@ -34,16 +34,16 @@ function updateTextInput(val, type) {
 //     drawPixel(3, 9, 0, 255, 0, 255);
 //     drawPixel(3, 10, 0, 255, 0, 255);
 //     drawPixel(3, 11, 0, 255, 0, 255);
-//     updateCanvas();
+//     updateCanvasBase();
 // };
 
 
 // SETUP global initializations
 
-var canvas = document.getElementById("display-canvas");
-var ctx = canvas.getContext("2d");
+let canvasBase = document.getElementById("display-canvas-base");
+let ctx = canvasBase.getContext("2d");
 
-let baseCircle = { radius: canvas.width / 3, cx: canvas.width / 2, cy: canvas.height / 2};
+let baseCircle = { radius: canvasBase.width / 3, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
 
 let rotatorCircle = { radius: baseCircle.radius / 3 }
 rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
@@ -52,7 +52,7 @@ rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - 
 // TEST draw initial circles
 
 function reset_drawing() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvasBase.width, canvasBase.height);
 
     ctx.beginPath();
     ctx.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
@@ -70,7 +70,7 @@ function reset_drawing() {
 
 function start_drawing() {
     let time = new Date();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvasBase.width, canvasBase.height);
     
     ctx.beginPath();
     ctx.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
@@ -78,7 +78,7 @@ function start_drawing() {
     
     ctx.save();
     
-    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.translate(canvasBase.width / 2, canvasBase.height / 2);
     ctx.rotate( (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds()) );
     ctx.translate(baseCircle.radius - rotatorCircle.radius, 0);
 
@@ -87,6 +87,10 @@ function start_drawing() {
     ctx.stroke();
 
     ctx.restore();
+
+    // posPen = { x: posr.x + p * Math.cos((R - r) / r * t), y: posr.y - p * Math.sin((R - r) / r * t) };
+    // ctx.beginPath();
+    // ctx.moveTo(baseCircle.cx + baseCircle.radius + rotatorCircle.radius, baseCircle.cy);
 
     window.requestAnimationFrame(start_drawing);
 }

@@ -138,10 +138,19 @@ body {
     padding: 1em 0em 0em;
 }
 
-.display-content-container {
+.display-canvas-container {
+    display: flex;
 }
 
-.display-canvas {
+.display-canvas-base {
     background-color: $elemented-selected-col;
     border: 1px solid $text-col;
+    z-index: 1;
+}
+
+.display-canvas-drawing {
+    background-color: transparent;
+    border: 1px solid $text-col;
+    position: absolute;
+    z-index: 2;
 }
