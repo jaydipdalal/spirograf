@@ -64,6 +64,19 @@ function reset_drawing() {
     contextBase.arc(rotatorCircle.cx, rotatorCircle.cy, rotatorCircle.radius, 0, 2 * Math.PI);
     // contextBase.strokeStyle = "#0000FF";
     contextBase.stroke();
+
+    let rotatingPointX = rotatorCircle.cx + rotatingPointDistance;
+    let rotatingPointY = rotatorCircle.cy;
+
+    contextBase.beginPath();
+    contextBase.moveTo(rotatorCircle.cx, rotatorCircle.cy);
+    contextBase.lineTo(rotatingPointX, rotatingPointY);
+    contextBase.stroke();
+
+    contextBase.beginPath();
+    contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
+    contextBase.fill()
+    contextBase.stroke();
 };
 reset_drawing();
 
@@ -98,8 +111,13 @@ function start_drawing() {
     contextBase.stroke();
     
     contextBase.beginPath();
-    contextBase.moveTo(0,0)
-    contextBase.lineTo(endPointX, endPointY);
+    contextBase.moveTo(0,0);
+    contextBase.lineTo(rotatingPointX, rotatingPointY);
+    contextBase.stroke();
+
+    contextBase.beginPath();
+    contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
+    contextBase.fill()
     contextBase.stroke();
 
     contextBase.restore();
