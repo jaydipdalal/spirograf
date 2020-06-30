@@ -47,8 +47,8 @@ updateRotatorCircle();
 let rotatingPointDistance = 75;
 
 // TODO
-let speed = 90;
-
+let speed = 60;
+let time = 0;
 
 // TEST draw initial circles
 
@@ -89,8 +89,7 @@ contextDrawing.beginPath();
 contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
 
 function start_drawing() {
-    let time = new Date();
-    let rotatorAngle = (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds());
+    let rotatorAngle = (((2 * Math.PI) / speed) * time++);
     let rotatingPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
     let rotatingPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
 
