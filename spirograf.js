@@ -1,9 +1,3 @@
-function updateTextInput(val, type) {
-    console.log(document.getElementsByClassName(type)[0].value)
-    document.getElementsByClassName(type)[0].value = val;
-};
-
-
 // // TEST draw pixel
 
 // let canvasBase = document.getElementById("display-canvasBase");
@@ -43,12 +37,18 @@ function updateTextInput(val, type) {
 let canvasBase = document.getElementById("display-canvas-base");
 let contextBase = canvasBase.getContext("2d");
 
-let baseCircle = { radius: canvasBase.width / 3, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
+let baseCircle = { radius: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
 
-let rotatorCircle = { radius: baseCircle.radius / 4 }
+let rotatorCircle = { radius: 99 }
+function updateRotatorCircle() {
 rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
-
+}
+updateRotatorCircle();
 let rotatingPointDistance = 75;
+
+// TODO
+let speed = 90;
+
 
 // TEST draw initial circles
 
@@ -65,6 +65,7 @@ function reset_drawing() {
     // contextBase.strokeStyle = "#0000FF";
     contextBase.stroke();
 };
+reset_drawing();
 
 
 // TEST draw rotating circle
@@ -77,8 +78,8 @@ contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
 function start_drawing() {
     let time = new Date();
     let rotatorAngle = (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds());
-    let endPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
-    let endPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+    let rotatingPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+    let rotatingPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
 
     contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
     
@@ -106,9 +107,38 @@ function start_drawing() {
     contextDrawing.save();
     contextDrawing.rotate(rotatorAngle);
     contextDrawing.translate(baseCircle.radius - rotatorCircle.radius, 0);
-    contextDrawing.lineTo(endPointX, endPointY);
+    contextDrawing.lineTo(rotatingPointX, rotatingPointY);
     contextDrawing.stroke();
     contextDrawing.restore();
 
     window.requestAnimationFrame(start_drawing);
 }
+
+
+// TEST variable parameters
+
+function updateTextInput(val, type) {
+    let valNum = parseInt(val);
+    document.getElementsByClassName(type)[0].value = valNum;
+
+    switch(type) {
+        case "options-content-value-1":
+            baseCircle.radius = valNum;
+            updateRotatorCircle();
+            break;
+        case "options-content-value-2":
+            rotatorCircle.radius = valNum;
+            updateRotatorCircle();
+            break;
+        case "options-content-value-3":
+            rotatingPointDistance = valNum;
+            break;
+        case "options-content-value-4":
+            speed = valNum;
+            break;
+        default:
+            null;
+    };
+
+    reset_drawing();
+};

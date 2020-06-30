@@ -24,28 +24,35 @@
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">STATIONARY RADIUS</label>
-                                <input class="options-content-value-1" type="text" value="30">
+                                <input class="options-content-value-1" type="text" value="300">
                             </div>
-                            <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-1');"></input>
+                            <input class="options-content-input-element" type="range" min="150" max="300" value="300" onchange="updateTextInput(this.value, 'options-content-value-1');"></input>
                         </div>
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">ROTATOR RADIUS</label>
-                                <input class="options-content-value-2" type="text" id="textInput" value="30">
+                                <input class="options-content-value-2" type="text" id="textInput" value="99">
                             </div>
-                            <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-2');"></input>
+                            <input class="options-content-input-element" type="range" min="30" max="150" value="99" onchange="updateTextInput(this.value, 'options-content-value-2');"></input>
+                        </div>
+                        <div class="options-content-container-2">
+                            <div class="options-content-header-container">
+                                <label class="options-content-text">FIXED POINT DISTANCE</label>
+                                <input class="options-content-value-3" type="text" id="textInput" value="75">
+                            </div>
+                            <input class="options-content-input-element" type="range" min="30" max="150" value="75" onchange="updateTextInput(this.value, 'options-content-value-3');"></input>
                         </div>
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">SPEED</label>
-                                <input class="options-content-value-3" type="text" id="textInput" value="30">
+                                <input class="options-content-value-4" type="text" id="textInput" value="30">
                             </div>
-                            <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-3');"></input>
+                            <input class="options-content-input-element" type="range" min="1" max="99" value="30" onchange="updateTextInput(this.value, 'options-content-value-4');"></input>
                         </div>
-                        <div class="options-content-container-1">
+                        <!-- <div class="options-content-container-1">
                             <label class="options-content-text">SPIRAL COUNT</label>
                             <input class="options-content-input-element-inline" type="number" min="10" max="999" step="10" value="30"></input>
-                        </div>
+                        </div> -->
                         <div class="options-content-container-1">
                             <label class="options-content-text">COLOR</label>
                             <input class="options-content-input-element-inline" type="color"></input>
