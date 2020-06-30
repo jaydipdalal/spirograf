@@ -45,9 +45,10 @@ let contextBase = canvasBase.getContext("2d");
 
 let baseCircle = { radius: canvasBase.width / 3, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
 
-let rotatorCircle = { radius: baseCircle.radius / 3 }
+let rotatorCircle = { radius: baseCircle.radius / 4 }
 rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
 
+let rotatingPointDistance = 75;
 
 // TEST draw initial circles
 
@@ -68,8 +69,17 @@ function reset_drawing() {
 
 // TEST draw rotating circle
 
+let canvasDrawing = document.getElementById("display-canvas-drawing");
+let contextDrawing = canvasDrawing.getContext("2d");
+contextDrawing.beginPath();
+contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
+
 function start_drawing() {
     let time = new Date();
+    let rotatorAngle = (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds());
+    let endPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+    let endPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+
     contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
     
     contextBase.beginPath();
@@ -79,18 +89,26 @@ function start_drawing() {
     contextBase.save();
     
     contextBase.translate(canvasBase.width / 2, canvasBase.height / 2);
-    contextBase.rotate( (((2 * Math.PI) / 3) * time.getSeconds()) + (((2 * Math.PI) / 3000) * time.getMilliseconds()) );
+    contextBase.rotate(rotatorAngle);
     contextBase.translate(baseCircle.radius - rotatorCircle.radius, 0);
 
     contextBase.beginPath();
     contextBase.arc(0, 0, rotatorCircle.radius, 0, 2 * Math.PI);
     contextBase.stroke();
+    
+    contextBase.beginPath();
+    contextBase.moveTo(0,0)
+    contextBase.lineTo(endPointX, endPointY);
+    contextBase.stroke();
 
     contextBase.restore();
 
-    // posPen = { x: posr.x + p * Math.cos((R - r) / r * t), y: posr.y - p * Math.sin((R - r) / r * t) };
-    // contextBase.beginPath();
-    // contextBase.moveTo(baseCircle.cx + baseCircle.radius + rotatorCircle.radius, baseCircle.cy);
+    contextDrawing.save();
+    contextDrawing.rotate(rotatorAngle);
+    contextDrawing.translate(baseCircle.radius - rotatorCircle.radius, 0);
+    contextDrawing.lineTo(endPointX, endPointY);
+    contextDrawing.stroke();
+    contextDrawing.restore();
 
     window.requestAnimationFrame(start_drawing);
 }
