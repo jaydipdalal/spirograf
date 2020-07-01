@@ -39,16 +39,18 @@ let contextBase = canvasBase.getContext("2d");
 
 let baseCircle = { radius: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
 
-let rotatorCircle = { radius: 99 }
+let rotatorCircle = { radius: 99 };
 function updateRotatorCircle() {
-rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
-}
+    rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
+};
 updateRotatorCircle();
+
 let rotatingPointDistance = 75;
 
 // TODO
 let speed = 60;
 let time = 0;
+let running = false;
 
 // TEST draw initial circles
 
@@ -89,47 +91,59 @@ contextDrawing.beginPath();
 contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
 
 function start_drawing() {
-    let rotatorAngle = (((2 * Math.PI) / speed) * time++);
-    let rotatingPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
-    let rotatingPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+    if (running) {
 
-    contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
-    
-    contextBase.beginPath();
-    contextBase.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
-    contextBase.stroke();
-    
-    contextBase.save();
-    
-    contextBase.translate(canvasBase.width / 2, canvasBase.height / 2);
-    contextBase.rotate(rotatorAngle);
-    contextBase.translate(baseCircle.radius - rotatorCircle.radius, 0);
+        let rotatorAngle = (((2 * Math.PI) / speed) * time++);
+        let rotatingPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+        let rotatingPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
 
-    contextBase.beginPath();
-    contextBase.arc(0, 0, rotatorCircle.radius, 0, 2 * Math.PI);
-    contextBase.stroke();
-    
-    contextBase.beginPath();
-    contextBase.moveTo(0,0);
-    contextBase.lineTo(rotatingPointX, rotatingPointY);
-    contextBase.stroke();
+        contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
+        
+        contextBase.beginPath();
+        contextBase.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
+        contextBase.stroke();
+        
+        contextBase.save();
+        
+        contextBase.translate(canvasBase.width / 2, canvasBase.height / 2);
+        contextBase.rotate(rotatorAngle);
+        contextBase.translate(baseCircle.radius - rotatorCircle.radius, 0);
 
-    contextBase.beginPath();
-    contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
-    contextBase.fill()
-    contextBase.stroke();
+        contextBase.beginPath();
+        contextBase.arc(0, 0, rotatorCircle.radius, 0, 2 * Math.PI);
+        contextBase.stroke();
+        
+        contextBase.beginPath();
+        contextBase.moveTo(0,0);
+        contextBase.lineTo(rotatingPointX, rotatingPointY);
+        contextBase.stroke();
 
-    contextBase.restore();
+        contextBase.beginPath();
+        contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
+        contextBase.fill();
+        contextBase.stroke();
 
-    contextDrawing.save();
-    contextDrawing.rotate(rotatorAngle);
-    contextDrawing.translate(baseCircle.radius - rotatorCircle.radius, 0);
-    contextDrawing.lineTo(rotatingPointX, rotatingPointY);
-    contextDrawing.stroke();
-    contextDrawing.restore();
+        contextBase.restore();
 
+        contextDrawing.save();
+        contextDrawing.rotate(rotatorAngle);
+        contextDrawing.translate(baseCircle.radius - rotatorCircle.radius, 0);
+        contextDrawing.lineTo(rotatingPointX, rotatingPointY);
+        contextDrawing.stroke();
+        contextDrawing.restore();
+
+        window.requestAnimationFrame(start_drawing);
+    };
+};
+
+function start() {
+    running = true;
     window.requestAnimationFrame(start_drawing);
-}
+};
+
+function stop() {
+    running = false;
+};
 
 
 // TEST variable parameters
