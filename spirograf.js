@@ -58,6 +58,8 @@ let contextDrawing = canvasDrawing.getContext("2d");
 // TEST draw initial circles
 
 function init_drawing() {
+    time = 0;
+
     contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
 
     contextBase.beginPath();
@@ -86,7 +88,6 @@ function init_drawing() {
     contextDrawing.save();
     contextDrawing.beginPath();
     contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
-
 };
 init_drawing();
 
@@ -152,7 +153,6 @@ function stop() {
 
 function reset() {
     stop();
-    time = 0;
     updateTextInput(300, 'options-content-value-1');
     updateTextInput(99, 'options-content-value-2');
     updateTextInput(75, 'options-content-value-3');
