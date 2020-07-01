@@ -82,7 +82,7 @@ body {
   width: 3em;
   text-align: center; }
 
-.options-content-input-element {
+.options-content-input-element-1, .options-content-input-element-2, .options-content-input-element-3, .options-content-input-element-4 {
   margin: .75em 0em 0em;
   text-align: right; }
 

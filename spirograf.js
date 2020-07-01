@@ -46,15 +46,17 @@ function updateRotatorCircle() {
 updateRotatorCircle();
 
 let rotatingPointDistance = 75;
-
-// TODO
 let speed = 60;
 let time = 0;
 let running = false;
 
+let canvasDrawing = document.getElementById("display-canvas-drawing");
+let contextDrawing = canvasDrawing.getContext("2d");
+
+
 // TEST draw initial circles
 
-function reset_drawing() {
+function init_drawing() {
     contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
 
     contextBase.beginPath();
@@ -79,16 +81,18 @@ function reset_drawing() {
     contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
     contextBase.fill()
     contextBase.stroke();
-};
-reset_drawing();
+
+    contextDrawing.restore();
+    contextDrawing.clearRect(0, 0, canvasDrawing.width, canvasDrawing.height);
+    contextDrawing.save();
+    contextDrawing.beginPath();
+    contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
+
+}
+init_drawing();
 
 
 // TEST draw rotating circle
-
-let canvasDrawing = document.getElementById("display-canvas-drawing");
-let contextDrawing = canvasDrawing.getContext("2d");
-contextDrawing.beginPath();
-contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
 
 function start_drawing() {
     if (running) {
@@ -136,6 +140,7 @@ function start_drawing() {
     };
 };
 
+
 function start() {
     running = true;
     window.requestAnimationFrame(start_drawing);
@@ -145,13 +150,23 @@ function stop() {
     running = false;
 };
 
+function reset() {
+    stop();
+    time = 0;
+    updateTextInput(300, 'options-content-value-1');
+    updateTextInput(99, 'options-content-value-2');
+    updateTextInput(75, 'options-content-value-3');
+    updateTextInput(60, 'options-content-value-4');
+};
+
 
 // TEST variable parameters
 
 function updateTextInput(val, type) {
     let valNum = parseInt(val);
     document.getElementsByClassName(type)[0].value = valNum;
-
+    document.getElementsByClassName( "options-content-input-element-" + type.slice(-1) )[0].value = valNum;
+    
     switch(type) {
         case "options-content-value-1":
             baseCircle.radius = valNum;
@@ -171,5 +186,5 @@ function updateTextInput(val, type) {
             null;
     };
 
-    reset_drawing();
+    init_drawing();
 };
