@@ -46,6 +46,7 @@ function updateRotatorCircle() {
 updateRotatorCircle();
 
 let rotatingPointDistance = 75;
+let color = "#000000";
 let speed = 60;
 let time = 0;
 let running = false;
@@ -61,12 +62,10 @@ function init_drawing() {
 
     contextBase.beginPath();
     contextBase.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
-    // contextBase.strokeStyle = "#00FF00";
     contextBase.stroke();
 
     contextBase.beginPath();
     contextBase.arc(rotatorCircle.cx, rotatorCircle.cy, rotatorCircle.radius, 0, 2 * Math.PI);
-    // contextBase.strokeStyle = "#0000FF";
     contextBase.stroke();
 
     let rotatingPointX = rotatorCircle.cx + rotatingPointDistance;
@@ -88,7 +87,7 @@ function init_drawing() {
     contextDrawing.beginPath();
     contextDrawing.translate(canvasBase.width / 2, canvasBase.height / 2);
 
-}
+};
 init_drawing();
 
 
@@ -133,6 +132,7 @@ function start_drawing() {
         contextDrawing.rotate(rotatorAngle);
         contextDrawing.translate(baseCircle.radius - rotatorCircle.radius, 0);
         contextDrawing.lineTo(rotatingPointX, rotatingPointY);
+        contextDrawing.strokeStyle = color;
         contextDrawing.stroke();
         contextDrawing.restore();
 
@@ -157,6 +157,7 @@ function reset() {
     updateTextInput(99, 'options-content-value-2');
     updateTextInput(75, 'options-content-value-3');
     updateTextInput(60, 'options-content-value-4');
+    updateColor("#000000");
 };
 
 
@@ -187,4 +188,9 @@ function updateTextInput(val, type) {
     };
 
     init_drawing();
+};
+
+function updateColor(newColor) {
+    color = newColor;
+    document.getElementsByClassName("options-content-input-element-inline-1")[0].value = newColor;
 };
