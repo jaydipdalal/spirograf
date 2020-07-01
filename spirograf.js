@@ -194,3 +194,10 @@ function updateColor(newColor) {
     color = newColor;
     document.getElementsByClassName("options-content-input-element-inline-1")[0].value = newColor;
 };
+
+
+// TEST download png
+
+function downloadPNG() {
+    document.getElementById("downloader").href = document.getElementById("display-canvas-drawing").toDataURL("image/png");
+};

@@ -55,7 +55,7 @@ body {
 .options-text {
     background-color: $element-col;
     color: $text-col;
-    width: 75%;
+    width: 90%;
     padding: .25em 0em;
     border: 1px solid $text-col;
     border-radius: .5em;
@@ -112,6 +112,24 @@ body {
 
 .options-content-input-element-inline-1 {
     text-align: right;
+}
+
+.options-content-container-3 {
+    display: flex;
+    justify-content: center;
+    padding: 1.75em 0em 0em;
+}
+
+.options-text-download {
+    background-color: $element-col;
+    color: $text-col;
+    width: 90%;
+    padding: .25em 0em;
+    border: 1px solid $text-col;
+    border-radius: .5em;
+    text-align: center;
+    font-size: 1.25em;
+    text-decoration: none;
 }
 
 
