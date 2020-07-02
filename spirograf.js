@@ -118,8 +118,10 @@ function start_drawing() {
 
 
 function start() {
-    running = true;
-    window.requestAnimationFrame(start_drawing);
+    if (!running) {
+        running = true;
+        window.requestAnimationFrame(start_drawing);
+    };
 };
 
 function stop() {
