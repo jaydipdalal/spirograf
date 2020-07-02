@@ -1,37 +1,3 @@
-// // TEST draw pixel
-
-// let canvasBase = document.getElementById("display-canvasBase");
-// let canvasBaseWidth = canvasBase.width;
-// let canvasBaseHeight = canvasBase.height;
-// let contextBase = canvasBase.getContext("2d");
-// let canvasBaseData = contextBase.getImageData(0, 0, canvasBaseWidth, canvasBaseHeight);
-
-// function drawPixel(x, y, r, g, b, a) {
-//     let index = (x + y * canvasBaseWidth) * 4;
-//     canvasBaseData.data[index + 0] = r;
-//     canvasBaseData.data[index + 1] = g;
-//     canvasBaseData.data[index + 2] = b;
-//     canvasBaseData.data[index + 3] = a;
-// };
-
-// function updateCanvasBase() {
-//     contextBase.putImageData(canvasBaseData, 0, 0);
-// };
-
-// function draw_test() {
-//     drawPixel(3, 3, 0, 255, 0, 255);
-//     drawPixel(3, 4, 0, 255, 0, 255);
-//     drawPixel(3, 5, 0, 255, 0, 255);
-//     drawPixel(3, 6, 0, 255, 0, 255);
-//     drawPixel(3, 7, 0, 255, 0, 255);
-//     drawPixel(3, 8, 0, 255, 0, 255);
-//     drawPixel(3, 9, 0, 255, 0, 255);
-//     drawPixel(3, 10, 0, 255, 0, 255);
-//     drawPixel(3, 11, 0, 255, 0, 255);
-//     updateCanvasBase();
-// };
-
-
 // SETUP global initializations
 
 let canvasBase = document.getElementById("display-canvas-base");
