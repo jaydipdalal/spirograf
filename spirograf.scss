@@ -33,7 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin: 1em 0em;
+    margin: 1.75em 0em;
 }
 
 
@@ -58,7 +58,7 @@ body {
 .app-container {
     display: flex;
     border: 1px solid $element-col;
-    margin: 1em 0em 0em;
+    margin: 1.75em 0em 0em;
 }
 
 
@@ -67,7 +67,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 24%;
-    padding: 1em;
+    padding: 1.75em 1em;
     border-right: 1px solid $element-col;
 }
 
@@ -75,7 +75,7 @@ body {
     background-color: $element-col;
     color: $text-col;
     width: 90%;
-    padding: .25em 0em;
+    padding: .5em 0em;
     border: 1px solid $text-col;
     border-radius: .5em;
     text-align: center;
@@ -91,7 +91,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 1.75em 0em 0em;
+    padding: 4.5em 0em 1.5em;
 }
 
 .options-content-button {
@@ -106,7 +106,7 @@ body {
 .options-content-container-2 {
     display: flex;
     flex-direction: column;
-    padding: 1.75em 0em 0em;
+    padding: 3em 0em 0em;
 }
 
  .options-content-header-container {
@@ -129,25 +129,33 @@ body {
     text-align: right;
 }
 
+.options-content-container-3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 3em 0em 0em;
+}
+
 .options-content-input-element-inline-1 {
+    width: 33%;
     text-align: right;
 }
 
-.options-content-container-3 {
+.options-content-container-4 {
     display: flex;
     justify-content: center;
-    padding: 1.75em 0em 0em;
+    padding: 4.5em 0em 0em;
 }
 
 .options-text-download {
     background-color: $element-col;
     color: $text-col;
     width: 90%;
-    padding: .25em 0em;
+    padding: .5em 1em;
     border: 1px solid $text-col;
-    border-radius: .5em;
+    border-radius: .25em;
+    margin: 0em .5em;
     text-align: center;
-    font-size: 1.25em;
     text-decoration: none;
 }
 
@@ -157,14 +165,14 @@ body {
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
-    padding: 1em;
+    padding: 1.75em 1em;
 }
 
 .display-text {
     background-color: $element-col;
     color: $text-col;
-    width: 75%;
-    padding: .25em 0em;
+    width: 90%;
+    padding: .5em 0em;
     border: 1px solid $text-col;
     border-radius: .5em;
     text-align: center;
@@ -172,7 +180,7 @@ body {
 }
 
 .display-content {
-    padding: 1em 0em 0em;
+    padding: 1.75em 0em 0em;
 }
 
 .display-canvas-container {
