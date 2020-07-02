@@ -56,6 +56,7 @@ function init_drawing() {
     contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
     contextBase.fillStyle = textCol;
     contextBase.fill()
+    contextBase.strokeStyle = textCol;
     contextBase.stroke();
 
     contextDrawing.restore();
@@ -80,6 +81,7 @@ function start_drawing() {
         
         contextBase.beginPath();
         contextBase.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
+        contextBase.strokeStyle = textCol;
         contextBase.stroke();
         
         contextBase.save();
@@ -90,16 +92,20 @@ function start_drawing() {
 
         contextBase.beginPath();
         contextBase.arc(0, 0, rotatorCircle.radius, 0, 2 * Math.PI);
+        contextBase.strokeStyle = textCol;
         contextBase.stroke();
         
         contextBase.beginPath();
         contextBase.moveTo(0,0);
         contextBase.lineTo(rotatingPointX, rotatingPointY);
+        contextBase.strokeStyle = textCol;
         contextBase.stroke();
 
         contextBase.beginPath();
         contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
+        contextBase.fillStyle = textCol;
         contextBase.fill();
+        contextBase.strokeStyle = textCol;
         contextBase.stroke();
 
         contextBase.restore();
