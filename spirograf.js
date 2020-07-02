@@ -1,5 +1,10 @@
 // SETUP global initializations
 
+let backgroundCol = "#1C1E24";
+let elementCol = "#283654";
+let elementedSelectedCol = "#4D638C";
+let textCol = "#CFE0F9";
+
 let canvasBase = document.getElementById("display-canvas-base");
 let contextBase = canvasBase.getContext("2d");
 
@@ -12,7 +17,7 @@ function updateRotatorCircle() {
 updateRotatorCircle();
 
 let rotatingPointDistance = 75;
-let color = "#1C1E24";
+let color = backgroundCol;
 let speed = 60;
 let time = 0;
 let running = false;
@@ -30,10 +35,12 @@ function init_drawing() {
 
     contextBase.beginPath();
     contextBase.arc(baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, 2 * Math.PI);
+    contextBase.strokeStyle = textCol;
     contextBase.stroke();
 
     contextBase.beginPath();
     contextBase.arc(rotatorCircle.cx, rotatorCircle.cy, rotatorCircle.radius, 0, 2 * Math.PI);
+    contextBase.strokeStyle = textCol;
     contextBase.stroke();
 
     let rotatingPointX = rotatorCircle.cx + rotatingPointDistance;
@@ -42,10 +49,12 @@ function init_drawing() {
     contextBase.beginPath();
     contextBase.moveTo(rotatorCircle.cx, rotatorCircle.cy);
     contextBase.lineTo(rotatingPointX, rotatingPointY);
+    contextBase.strokeStyle = textCol;
     contextBase.stroke();
 
     contextBase.beginPath();
     contextBase.arc(rotatingPointX, rotatingPointY, 3, 0, 2 * Math.PI);
+    contextBase.fillStyle = textCol;
     contextBase.fill()
     contextBase.stroke();
 
@@ -123,7 +132,7 @@ function reset() {
     updateTextInput(99, 'options-content-value-2');
     updateTextInput(75, 'options-content-value-3');
     updateTextInput(60, 'options-content-value-4');
-    updateColor("#000000");
+    updateColor(backgroundCol);
 };
 
 
