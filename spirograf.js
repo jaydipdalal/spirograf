@@ -12,7 +12,7 @@ function updateRotatorCircle() {
 updateRotatorCircle();
 
 let rotatingPointDistance = 75;
-let color = "#000000";
+let color = "#1C1E24";
 let speed = 60;
 let time = 0;
 let running = false;

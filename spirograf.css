@@ -1,5 +1,5 @@
 body {
-  background: #0B0909;
+  background: #1C1E24;
   font-family: 'Roboto', sans-serif;
   font-size: 1em; }
 
@@ -15,18 +15,18 @@ body {
   width: 100%; }
 
 .title-text {
-  background-color: #44444C;
-  color: #D6D6D6;
+  background-color: #283654;
+  color: #CFE0F9;
   width: 90%;
   padding: .75em 0em;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   border-radius: .25em;
   text-align: center;
   font-size: 1.75em; }
 
 .app-container {
   display: flex;
-  border: 1px solid #44444C;
+  border: 1px solid #283654;
   margin: 1em 0em 0em; }
 
 .options-panel {
@@ -35,14 +35,14 @@ body {
   align-items: center;
   width: 24%;
   padding: 1em;
-  border-right: 1px solid #44444C; }
+  border-right: 1px solid #283654; }
 
 .options-text {
-  background-color: #44444C;
-  color: #D6D6D6;
+  background-color: #283654;
+  color: #CFE0F9;
   width: 90%;
   padding: .25em 0em;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   border-radius: .5em;
   text-align: center;
   font-size: 1.25em; }
@@ -58,10 +58,10 @@ body {
   padding: 1.75em 0em 0em; }
 
 .options-content-button {
-  background-color: #44444C;
-  color: #D6D6D6;
+  background-color: #283654;
+  color: #CFE0F9;
   padding: .5em 1em;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   border-radius: .25em;
   margin: 0em .5em; }
 
@@ -76,7 +76,7 @@ body {
   align-items: flex-end; }
 
 .options-content-text {
-  color: #D6D6D6; }
+  color: #CFE0F9; }
 
 .options-content-value-1, .options-content-value-2, .options-content-value-3, .options-content-value-4 {
   width: 3em;
@@ -95,11 +95,11 @@ body {
   padding: 1.75em 0em 0em; }
 
 .options-text-download {
-  background-color: #44444C;
-  color: #D6D6D6;
+  background-color: #283654;
+  color: #CFE0F9;
   width: 90%;
   padding: .25em 0em;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   border-radius: .5em;
   text-align: center;
   font-size: 1.25em;
@@ -113,11 +113,11 @@ body {
   padding: 1em; }
 
 .display-text {
-  background-color: #44444C;
-  color: #D6D6D6;
+  background-color: #283654;
+  color: #CFE0F9;
   width: 75%;
   padding: .25em 0em;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   border-radius: .5em;
   text-align: center;
   font-size: 1.25em; }
@@ -129,13 +129,13 @@ body {
   display: flex; }
 
 .display-canvas-base {
-  background-color: #8C8C8C;
-  border: 1px solid #D6D6D6;
+  background-color: #4D638C;
+  border: 1px solid #CFE0F9;
   z-index: 1; }
 
 .display-canvas-drawing {
   background-color: transparent;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #CFE0F9;
   position: absolute;
   z-index: 2; }
 
