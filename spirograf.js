@@ -8,17 +8,17 @@ let textCol = "#CFE0F9";
 let canvasBase = document.getElementById("display-canvas-base");
 let contextBase = canvasBase.getContext("2d");
 
-let baseCircle = { radius: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2};
+let baseCircle = { radius: 300, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
 
-let rotatorCircle = { radius: 99 };
+let rotatorCircle = { radius: 99, radiusMin: 30, radiusMax: 150 };
 function updateRotatorCircle() {
-    rotatorCircle = {...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
+    rotatorCircle = { ...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
 };
 updateRotatorCircle();
 
-let rotatingPointDistance = 75;
+let rotatingPoint = { distance: 75, distanceMin: 30, distanceMax: 201 };
+let speed = { time: 60, timeMin: 10, timeMax: 120 };
 let color = backgroundCol;
-let speed = 60;
 let time = 0;
 let running = false;
 
@@ -43,7 +43,7 @@ function init_drawing() {
     contextBase.strokeStyle = textCol;
     contextBase.stroke();
 
-    let rotatingPointX = rotatorCircle.cx + rotatingPointDistance;
+    let rotatingPointX = rotatorCircle.cx + rotatingPoint.distance;
     let rotatingPointY = rotatorCircle.cy;
 
     contextBase.beginPath();
@@ -73,9 +73,9 @@ init_drawing();
 function start_drawing() {
     if (running) {
 
-        let rotatorAngle = (((2 * Math.PI) / speed) * time++);
-        let rotatingPointX = rotatingPointDistance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
-        let rotatingPointY = 0 - rotatingPointDistance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+        let rotatorAngle = (((2 * Math.PI) / speed.time) * time++);
+        let rotatingPointX = rotatingPoint.distance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+        let rotatingPointY = 0 - rotatingPoint.distance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
 
         contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
         
@@ -148,27 +148,32 @@ function reset() {
 
 function updateTextInput(val, type) {
     let valNum = parseInt(val);
-    document.getElementsByClassName(type)[0].value = valNum;
-    document.getElementsByClassName( "options-content-input-element-" + type.slice(-1) )[0].value = valNum;
     
     switch(type) {
         case "options-content-value-1":
+            valNum = (valNum < baseCircle.radiusMin) ? baseCircle.radiusMin : (valNum > baseCircle.radiusMax) ? baseCircle.radiusMax : valNum;
             baseCircle.radius = valNum;
             updateRotatorCircle();
             break;
         case "options-content-value-2":
+            valNum = (valNum < rotatorCircle.radiusMin) ? rotatorCircle.radiusMin : (valNum > rotatorCircle.radiusMax) ? rotatorCircle.radiusMax : valNum;
             rotatorCircle.radius = valNum;
             updateRotatorCircle();
             break;
         case "options-content-value-3":
-            rotatingPointDistance = valNum;
+            valNum = (valNum < rotatingPoint.distanceMin) ? rotatingPoint.distanceMin : (valNum > rotatingPoint.distanceMax) ? rotatingPoint.distanceMax : valNum;
+            rotatingPoint.distance = valNum;
             break;
         case "options-content-value-4":
-            speed = valNum;
+            valNum = (valNum < speed.timeMin) ? speed.timeMin : (valNum > speed.timeMax) ? speed.timeMax : valNum;
+            speed.time = valNum;
             break;
         default:
             null;
     };
+
+    document.getElementsByClassName(type)[0].value = valNum;
+    document.getElementsByClassName("options-content-input-element-" + type.slice(-1))[0].value = valNum;
 
     init_drawing();
 };

@@ -24,28 +24,28 @@
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">STATIONARY RADIUS</label>
-                                <input class="options-content-value-1" type="text" value="300">
+                                <input class="options-content-value-1" type="number" min="150" max="300" value="300" onchange="updateTextInput(this.value, 'options-content-value-1');">
                             </div>
                             <input class="options-content-input-element-1" type="range" min="150" max="300" value="300" onchange="updateTextInput(this.value, 'options-content-value-1');"></input>
                         </div>
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">ROTATOR RADIUS</label>
-                                <input class="options-content-value-2" type="text" id="textInput" value="99">
+                                <input class="options-content-value-2" type="number" min="30" max="150" value="99" onchange="updateTextInput(this.value, 'options-content-value-2');">
                             </div>
                             <input class="options-content-input-element-2" type="range" min="30" max="150" value="99" onchange="updateTextInput(this.value, 'options-content-value-2');"></input>
                         </div>
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">FIXED POINT DISTANCE</label>
-                                <input class="options-content-value-3" type="text" id="textInput" value="75">
+                                <input class="options-content-value-3" type="number" min="30" max="201" value="75" onchange="updateTextInput(this.value, 'options-content-value-3');">
                             </div>
                             <input class="options-content-input-element-3" type="range" min="30" max="201" value="75" onchange="updateTextInput(this.value, 'options-content-value-3');"></input>
                         </div>
                         <div class="options-content-container-2">
                             <div class="options-content-header-container">
                                 <label class="options-content-text">ROTATION TIME</label>
-                                <input class="options-content-value-4" type="text" id="textInput" value="60">
+                                <input class="options-content-value-4" type="number" min="10" max="120" value="60" onchange="updateTextInput(this.value, 'options-content-value-4');">
                             </div>
                             <input class="options-content-input-element-4" type="range" min="10" max="120" value="60" onchange="updateTextInput(this.value, 'options-content-value-4');"></input>
                         </div>
