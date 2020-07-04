@@ -103,6 +103,7 @@ body {
     border: 1px solid $text-col;
     border-radius: .75em;
     margin: 0em .5em;
+    font-size: 1em;
 }
 
 .options-content-button:hover {
@@ -126,8 +127,9 @@ body {
     margin: 1.5em 0em 0em;
 }
 
-.options-content-container-2:hover {
+.options-content-container-2:hover .options-content-text{
     // background-color: $element-selected-col;
+    // color: $element-selected-col;
 }
 
  .options-content-header-container {
@@ -144,7 +146,7 @@ body {
     background-color: $element-col;
     color: $text-col;
     width: 3em;
-    padding: .5em .25em;
+    padding: .5em .0em .5em 1em;
     text-align: center;
     border: 1px solid $text-col;
     border-radius: .5em;
