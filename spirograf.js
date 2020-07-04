@@ -99,6 +99,8 @@ reset = () => {
     updateTextInput(75, 'options-content-value-3');
     updateTextInput(60, 'options-content-value-4');
     updateColor(backgroundCol);
+    document.getElementsByClassName("display-canvas-base")[0].classList.remove("display-canvas-base-hidden");
+    document.getElementsByClassName("display-canvas-drawing")[0].classList.remove("display-canvas-drawing-no-transparent");
 };
 
 
@@ -151,6 +153,15 @@ updateTextInput = (val, type) => {
 updateColor = (newColor) => {
     color = newColor;
     document.getElementsByClassName("options-content-input-element-inline-1")[0].value = newColor;
+};
+
+
+// Toggle visibility of base canvas
+toggleCircles = () => {
+    let canvasBaseClasses = document.getElementsByClassName("display-canvas-base")[0].classList;
+    console.log(canvasBaseClasses)
+    document.getElementsByClassName("display-canvas-base")[0].classList.toggle("display-canvas-base-hidden");
+    document.getElementsByClassName("display-canvas-drawing")[0].classList.toggle("display-canvas-drawing-no-transparent");
 };
 
 

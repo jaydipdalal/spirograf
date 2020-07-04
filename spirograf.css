@@ -183,10 +183,16 @@ body {
   border: 1px solid #CFE0F9;
   z-index: 1; }
 
+.display-canvas-base-hidden {
+  visibility: hidden; }
+
 .display-canvas-drawing {
   background-color: transparent;
   border: 1px solid #CFE0F9;
   position: absolute;
   z-index: 2; }
+
+.display-canvas-drawing-no-transparent {
+  background-color: #4D638C; }
 
 /*# sourceMappingURL=spirograf.css.map */
