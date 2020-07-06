@@ -13,15 +13,17 @@ let canvasDrawing = document.getElementById("display-canvas-drawing");
 let contextDrawing = canvasDrawing.getContext("2d");
 
 // Global shapes
-let baseCircle = { radius: 300, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
+let defaultVals = { baseCircleRadius: 300, rotatorCircleRadius: 99, rotatingPointDistance: 75, speedTime: 60 };
 
-let rotatorCircle = { radius: 99, radiusMin: 30, radiusMax: 150 };
+let baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
+
+let rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 30, radiusMax: 150 };
 updateRotatorCircle = () => rotatorCircle = { ...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
 updateRotatorCircle();
 
 // Global drawing point
-let rotatingPoint = { distance: 75, distanceMin: 30, distanceMax: 201 };
-let speed = { time: 60, timeMin: 10, timeMax: 120 };
+let rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 201 };
+let speed = { time: defaultVals.speedTime, timeMin: 10, timeMax: 120 };
 let color = backgroundCol;
 let time = 0;
 let running = false;
@@ -94,10 +96,10 @@ stop = () => {
 
 reset = () => {
     stop();
-    updateTextInput(300, 'options-content-value-1');
-    updateTextInput(99, 'options-content-value-2');
-    updateTextInput(75, 'options-content-value-3');
-    updateTextInput(60, 'options-content-value-4');
+    updateTextInput(defaultVals.baseCircleRadius, 'options-content-value-1');
+    updateTextInput(defaultVals.rotatorCircleRadius, 'options-content-value-2');
+    updateTextInput(defaultVals.rotatingPointDistance, 'options-content-value-3');
+    updateTextInput(defaultVals.speedTime, 'options-content-value-4');
     updateColor(backgroundCol);
     document.getElementsByClassName("display-canvas-base")[0].classList.remove("display-canvas-base-hidden");
     document.getElementsByClassName("display-canvas-drawing")[0].classList.remove("display-canvas-drawing-no-transparent");
