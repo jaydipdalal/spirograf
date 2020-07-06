@@ -158,7 +158,6 @@ updateColor = (newColor) => {
 
 // Toggle visibility of base canvas
 toggleCircles = () => {
-    let canvasBaseClasses = document.getElementsByClassName("display-canvas-base")[0].classList;
     document.getElementsByClassName("display-canvas-base")[0].classList.toggle("display-canvas-base-hidden");
     document.getElementsByClassName("display-canvas-drawing")[0].classList.toggle("display-canvas-drawing-no-transparent");
 };
