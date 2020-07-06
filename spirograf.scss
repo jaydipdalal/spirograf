@@ -201,7 +201,7 @@ body {
     padding: 3em 0em 0em;
 }
 
-.options-text-download {
+.options-button-download, .options-button-toggle {
     background-color: $element-col;
     color: $text-col;
     width: 90%;
@@ -213,7 +213,7 @@ body {
     text-decoration: none;
 }
 
-.options-text-download:hover {
+.options-button-download:hover, .options-button-toggle:hover {
     background-color: $element-selected-col;
 }
 

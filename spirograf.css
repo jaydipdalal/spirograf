@@ -141,7 +141,7 @@ body {
   justify-content: center;
   padding: 3em 0em 0em; }
 
-.options-text-download {
+.options-button-download, .options-button-toggle {
   background-color: #283654;
   color: #CFE0F9;
   width: 90%;
@@ -152,7 +152,7 @@ body {
   text-align: center;
   text-decoration: none; }
 
-.options-text-download:hover {
+.options-button-download:hover, .options-button-toggle:hover {
   background-color: #4D638C; }
 
 .display-panel {
