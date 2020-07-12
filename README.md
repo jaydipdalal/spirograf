@@ -54,7 +54,7 @@ The interface is designed to be clean, simple, and intuitive. With the goal of s
 
 <br />
 <br />
-<img src="./assets/images/readme/spirograf_running.png" align="center" />
+<img src="./assets/images/readme/spirograf_running.gif" align="center" />
 <br />
 <br />
 
