@@ -29,10 +29,14 @@ SpiroGraf is intentionally built with the simplest of technologies:
 
 ## Features
 
-* Adjustable radii for the stationary and rotational circles, along with the distance of the fixed point
-* Adjustable speed of drawing generation
-* Ability to change line color
-* Ability to start and stop generation, and reset properties
+* Adjustable properties:
+    * Radii for the stationary and rotational circles
+    * Distance of the fixed point
+    * Speed of drawing generation
+    * Line color
+* Control options:
+    * Start and stop generation
+    * Reset properties
 * Ability to download picture (PNG) of the generated figure
 
 ***
