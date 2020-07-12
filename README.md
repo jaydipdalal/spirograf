@@ -2,11 +2,11 @@
 
 Spirals, fractals, or grafitti ?
 
-Welcome to [SprioGraf](https://jdalal.dev/spirograf/spirograf.html "SpiroGraf Live Demo") !
+Welcome to [SpiroGraf](https://jdalal.dev/spirograf/spirograf.html "SpiroGraf Live Demo") !
 
-SpiroGraf is a tool for exploring hypotrochoids. (Inspired by spiderwebs and patterns.)
+SpiroGraf is a tool for exploring hypotrochoids.
 
-Users can adjust properties of the stationary and rotating circles in order to visualize and generate the resulting figures.
+Inspired by spiderwebs and patterns, SpiroGraf enables users to adjust properties of the stationary and rotating circles in order to visualize and generate the resulting figures.
 
 ***
 
@@ -81,12 +81,14 @@ The interface is designed to be clean, simple, and intuitive. With the goal of s
 ***
 
 ## Code Snippets
+
 * Canvas utility functions
 * Dynamic update utility function
 
 ***
 
 ## TODO
+
 * Epitrochoid
 * Color gradients
 * Instructions popup
