@@ -36,7 +36,7 @@ SpiroGraf is intentionally built with the simplest of technologies:
     * Line color
 * Control options:
     * Start and stop generation
-    * Reset properties
+    * Reset properties to default values
 * Ability to download picture (PNG) of the generated figure
 
 ***
@@ -45,41 +45,25 @@ SpiroGraf is intentionally built with the simplest of technologies:
 
 The interface is designed to be clean, simple, and intuitive. With the goal of stimulating an exploratory mindset.
 <br />
-<br />
 <img src="./assets/images/readme/spirograf_interface.png" align="center" />
-<br />
 <br />
 
 ***
 
-## Samples
+## Examples
 
-## Figure Generation
+### Figure Generation
 
-<br />
 <br />
 <img src="./assets/images/readme/spirograf_running.gif" align="center" />
 <br />
-<br />
 
-## Resulting Figures
+### Resulting Figures
 
-<br />
 <br />
 <img src="./assets/images/readme/spirograf_resultFigure1.png" align="center" />
-<br />
-<br />
-
-<br />
-<br />
-<img src="./assets/images/readme/spirograf_resultFigure1.png" align="center" />
-<br />
-<br />
-
-<br />
-<br />
-<img src="./assets/images/readme/spirograf_resultFigure1.png" align="center" />
-<br />
+<img src="./assets/images/readme/spirograf_resultFigure2.png" align="center" />
+<img src="./assets/images/readme/spirograf_resultFigure3.png" align="center" />
 <br />
 
 ***
