@@ -167,7 +167,7 @@ updateTextInput = (val, type) => {
     initDrawing();
 };
 
-updateColor = (newColor) => {
+updateColor = newColor => {
     color = newColor;
     document.getElementsByClassName("options-content-input-element-inline-1")[0].value = newColor;
 };
