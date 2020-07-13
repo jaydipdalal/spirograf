@@ -241,3 +241,20 @@ body {
 .display-canvas-drawing-no-transparent {
     background-color: $element-selected-col;
 }
+
+
+@media only screen and ( min-width:931px ) and ( max-width: 1331px ) {
+    .app-container {
+        flex-direction: column-reverse;
+    }
+
+    .options-panel {
+        width: 100%;
+        padding: 1.75em 0em;
+        border-right: none;
+    }
+
+    .display-panel {
+        border-bottom: 1px solid $element-col;
+    }
+}
