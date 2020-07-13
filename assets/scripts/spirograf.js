@@ -192,7 +192,33 @@ drawLine = (context, toggleBegin = 0, srcX = false, srcY = false, destX, destY, 
 
 
 // TEST responsive layout for canvases
-myFunction = windowMatchMedium => {
+
+resize = () => {
+    document.getElementsByClassName("options-content-value-1")[0].min = baseCircle.radiusMin;
+    document.getElementsByClassName("options-content-value-1")[0].max = baseCircle.radiusMax;
+    document.getElementsByClassName("options-content-value-1")[0].value = baseCircle.radius;
+    document.getElementsByClassName("options-content-input-element-1")[0].min = baseCircle.radiusMin;
+    document.getElementsByClassName("options-content-input-element-1")[0].max = baseCircle.radiusMax;
+    document.getElementsByClassName("options-content-input-element-1")[0].value = baseCircle.radius;
+
+    document.getElementsByClassName("options-content-value-2")[0].min = rotatorCircle.radiusMin;
+    document.getElementsByClassName("options-content-value-2")[0].max = rotatorCircle.radiusMax;
+    document.getElementsByClassName("options-content-value-2")[0].value = rotatorCircle.radius;
+    document.getElementsByClassName("options-content-input-element-2")[0].min = rotatorCircle.radiusMin;
+    document.getElementsByClassName("options-content-input-element-2")[0].max = rotatorCircle.radiusMax;
+    document.getElementsByClassName("options-content-input-element-2")[0].value = rotatorCircle.radius;
+
+    document.getElementsByClassName("options-content-value-3")[0].min = rotatingPoint.distanceMin;
+    document.getElementsByClassName("options-content-value-3")[0].max = rotatingPoint.distanceMax;
+    document.getElementsByClassName("options-content-value-3")[0].value = rotatingPoint.distance;
+    document.getElementsByClassName("options-content-input-element-3")[0].min = rotatingPoint.distanceMin;
+    document.getElementsByClassName("options-content-input-element-3")[0].max = rotatingPoint.distanceMax;
+    document.getElementsByClassName("options-content-input-element-3")[0].value = rotatingPoint.distance;
+
+    initDrawing();
+};
+
+windowMediumResize = windowMatchMedium => {
     if (windowMatchMedium.matches) {
         canvasBase.width = 300;
         canvasBase.height = 300;
@@ -208,33 +234,35 @@ myFunction = windowMatchMedium => {
 
         rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 10, distanceMax: 67 };
 
-        document.getElementsByClassName("options-content-value-1")[0].min = baseCircle.radiusMin;
-        document.getElementsByClassName("options-content-value-1")[0].max = baseCircle.radiusMax;
-        document.getElementsByClassName("options-content-value-1")[0].value = baseCircle.radius;
-        document.getElementsByClassName("options-content-input-element-1")[0].min = baseCircle.radiusMin;
-        document.getElementsByClassName("options-content-input-element-1")[0].max = baseCircle.radiusMax;
-        document.getElementsByClassName("options-content-input-element-1")[0].value = baseCircle.radius;
-
-        document.getElementsByClassName("options-content-value-2")[0].min = rotatorCircle.radiusMin;
-        document.getElementsByClassName("options-content-value-2")[0].max = rotatorCircle.radiusMax;
-        document.getElementsByClassName("options-content-value-2")[0].value = rotatorCircle.radius;
-        document.getElementsByClassName("options-content-input-element-2")[0].min = rotatorCircle.radiusMin;
-        document.getElementsByClassName("options-content-input-element-2")[0].max = rotatorCircle.radiusMax;
-        document.getElementsByClassName("options-content-input-element-2")[0].value = rotatorCircle.radius;
-        
-        document.getElementsByClassName("options-content-value-3")[0].min = rotatingPoint.distanceMin;
-        document.getElementsByClassName("options-content-value-3")[0].max = rotatingPoint.distanceMax;
-        document.getElementsByClassName("options-content-value-3")[0].value = rotatingPoint.distance;
-        document.getElementsByClassName("options-content-input-element-3")[0].min = rotatingPoint.distanceMin;
-        document.getElementsByClassName("options-content-input-element-3")[0].max = rotatingPoint.distanceMax;
-        document.getElementsByClassName("options-content-input-element-3")[0].value = rotatingPoint.distance;
-
-        initDrawing();
+        resize();
     };
 };
 let windowMatchMedium = window.matchMedia("(max-width: 631px)");
-myFunction(windowMatchMedium);
-windowMatchMedium.addListener(myFunction);
+windowMediumResize(windowMatchMedium);
+windowMatchMedium.addListener(windowMediumResize);
+
+windowSmallResize = windowMatchSmall => {
+    if (windowMatchSmall.matches) {
+        canvasBase.width = 600;
+        canvasBase.height = 600;
+        canvasDrawing.width = 600;
+        canvasDrawing.height = 600;
+
+        defaultVals = { baseCircleRadius: 200, rotatorCircleRadius: 66, rotatingPointDistance: 50, speedTime: 60 };
+
+        baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 100, radiusMax: 200, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
+
+        rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 20, radiusMax: 100 };
+        updateRotatorCircle();
+
+        rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 20, distanceMax: 133 };
+
+        resize();
+    };
+};
+let windowMatchSmall = window.matchMedia("( min-width:632px ) and ( max-width: 969px )");
+windowSmallResize(windowMatchSmall);
+windowMatchSmall.addListener(windowSmallResize);
 
 
 // Initialize app
