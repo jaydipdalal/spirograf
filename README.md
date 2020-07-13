@@ -14,7 +14,6 @@ Inspired by spiderwebs and patterns, SpiroGraf enables users to adjust propertie
 
 Per wikipedia: A hypotrochoid is a roulette traced by a point attached to a circle of radius *r* rolling around the inside of a fixed circle of radius *R*, where the point is a distance *d* from the center of the interior circle.
 
-SpiroGraf is best viewed on larger resolution screens.
 ***
 
 ## Technologies
@@ -82,4 +81,4 @@ The interface is designed to be clean, simple, and intuitive. With the goal of s
 * Instructions popup
 * Pixel smoothing
 * Alternate base shapes
-* Mobile layout
+* ~~Mobile layout~~
