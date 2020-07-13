@@ -195,7 +195,7 @@ body {
 .display-canvas-drawing-no-transparent {
   background-color: #4D638C; }
 
-@media only screen and (min-width: 931px) and (max-width: 1331px) {
+@media only screen and (max-width: 1331px) {
   .app-container {
     flex-direction: column-reverse; }
 
