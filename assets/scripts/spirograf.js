@@ -218,8 +218,8 @@ resize = () => {
     initDrawing();
 };
 
-windowMediumResize = windowMatchMedium => {
-    if (windowMatchMedium.matches) {
+windowSmallResize = windowMatchSmall => {
+    if (windowMatchSmall.matches) {
         canvasBase.width = 300;
         canvasBase.height = 300;
         canvasDrawing.width = 300;
@@ -237,12 +237,12 @@ windowMediumResize = windowMatchMedium => {
         resize();
     };
 };
-let windowMatchMedium = window.matchMedia("(max-width: 631px)");
-windowMediumResize(windowMatchMedium);
-windowMatchMedium.addListener(windowMediumResize);
+let windowMatchSmall = window.matchMedia("(max-width: 631px)");
+windowSmallResize(windowMatchSmall);
+windowMatchSmall.addListener(windowSmallResize);
 
-windowSmallResize = windowMatchSmall => {
-    if (windowMatchSmall.matches) {
+windowMediumResize = windowMatchMedium => {
+    if (windowMatchMedium.matches) {
         canvasBase.width = 600;
         canvasBase.height = 600;
         canvasDrawing.width = 600;
@@ -260,9 +260,32 @@ windowSmallResize = windowMatchSmall => {
         resize();
     };
 };
-let windowMatchSmall = window.matchMedia("( min-width:632px ) and ( max-width: 969px )");
-windowSmallResize(windowMatchSmall);
-windowMatchSmall.addListener(windowSmallResize);
+let windowMatchMedium = window.matchMedia("( min-width:632px ) and ( max-width: 969px )");
+windowMediumResize(windowMatchMedium);
+windowMatchMedium.addListener(windowMediumResize);
+
+windowLargeResize = windowMatchLarge => {
+    if (windowMatchLarge.matches) {
+        canvasBase.width = 900;
+        canvasBase.height = 900;
+        canvasDrawing.width = 900;
+        canvasDrawing.height = 900;
+
+        defaultVals = { baseCircleRadius: 300, rotatorCircleRadius: 99, rotatingPointDistance: 75, speedTime: 60 };
+
+        baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
+
+        rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 30, radiusMax: 150 };
+        updateRotatorCircle();
+
+        rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 201 };
+
+        resize();
+    };
+};
+let windowMatchLarge = window.matchMedia("(min-width: 970px)");
+windowLargeResize(windowMatchLarge);
+windowMatchLarge.addListener(windowLargeResize);
 
 
 // Initialize app
