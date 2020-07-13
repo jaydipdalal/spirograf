@@ -72,8 +72,7 @@ body {
 .options-content-container-1 {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
+    align-items: center;
     padding: 3em 0em 1.5em;
 }
 
@@ -256,5 +255,11 @@ body {
 
     .display-panel {
         border-bottom: 1px solid $element-col;
+    }
+}
+
+@media only screen and ( max-width: 366px ) {
+    .options-content {
+        width: 88%;
     }
 }

@@ -237,12 +237,21 @@ resize = canvasSize => {
 
 // Resize responsive layout for canvases
 
+windowMiniResize = windowMatchMini => {
+    if (windowMatchMini.matches) {
+        resize(270);
+    };
+};
+let windowMatchMini = window.matchMedia("( max-width: 366px )");
+windowMiniResize(windowMatchMini);
+windowMatchMini.addListener(windowMiniResize);
+
 windowSmallResize = windowMatchSmall => {
     if (windowMatchSmall.matches) {
         resize(300);
     };
 };
-let windowMatchSmall = window.matchMedia("(max-width: 631px)");
+let windowMatchSmall = window.matchMedia("( min-width:367px ) and (max-width: 631px)");
 windowSmallResize(windowMatchSmall);
 windowMatchSmall.addListener(windowSmallResize);
 
