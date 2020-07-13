@@ -22,7 +22,7 @@ updateRotatorCircle = () => rotatorCircle = { ...rotatorCircle, ...{ cx: baseCir
 updateRotatorCircle();
 
 // Global drawing point
-let rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 201 };
+let rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 200 };
 let speed = { time: defaultVals.speedTime, timeMin: 10, timeMax: 120 };
 let color = backgroundCol;
 let time = 0;
@@ -106,7 +106,7 @@ reset = () => {
 };
 
 
-// TEST update variable parameters
+// Update variable properties
 
 updateTextInput = (val, type) => {
     let valNum = parseInt(val);
@@ -191,9 +191,23 @@ drawLine = (context, toggleBegin = 0, srcX = false, srcY = false, destX, destY, 
 };
 
 
-// TEST responsive layout for canvases
+// Resize responsive layout for canvases
 
-resize = () => {
+resize = canvasSize => {
+    canvasBase.width = canvasSize;
+    canvasBase.height = canvasSize;
+    canvasDrawing.width = canvasSize;
+    canvasDrawing.height = canvasSize;
+
+    defaultVals = { baseCircleRadius: canvasSize/3, rotatorCircleRadius: Math.ceil(canvasSize/9) - 1, rotatingPointDistance: canvasSize/12, speedTime: 60 };
+
+    baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: canvasSize/6, radiusMax: canvasSize/3, cx: canvasSize / 2, cy: canvasSize / 2 };
+
+    rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: canvasSize/30, radiusMax: canvasSize/6};
+    updateRotatorCircle();
+
+    rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: canvasSize/30, distanceMax: Math.floor(canvasSize/4.5) };
+
     document.getElementsByClassName("options-content-value-1")[0].min = baseCircle.radiusMin;
     document.getElementsByClassName("options-content-value-1")[0].max = baseCircle.radiusMax;
     document.getElementsByClassName("options-content-value-1")[0].value = baseCircle.radius;
@@ -220,21 +234,7 @@ resize = () => {
 
 windowSmallResize = windowMatchSmall => {
     if (windowMatchSmall.matches) {
-        canvasBase.width = 300;
-        canvasBase.height = 300;
-        canvasDrawing.width = 300;
-        canvasDrawing.height = 300;
-
-        defaultVals = { baseCircleRadius: 100, rotatorCircleRadius: 33, rotatingPointDistance: 25, speedTime: 60 };
-
-        baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 50, radiusMax: 100, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
-
-        rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 10, radiusMax: 50 };
-        updateRotatorCircle();
-
-        rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 10, distanceMax: 67 };
-
-        resize();
+        resize(300);
     };
 };
 let windowMatchSmall = window.matchMedia("(max-width: 631px)");
@@ -243,21 +243,7 @@ windowMatchSmall.addListener(windowSmallResize);
 
 windowMediumResize = windowMatchMedium => {
     if (windowMatchMedium.matches) {
-        canvasBase.width = 600;
-        canvasBase.height = 600;
-        canvasDrawing.width = 600;
-        canvasDrawing.height = 600;
-
-        defaultVals = { baseCircleRadius: 200, rotatorCircleRadius: 66, rotatingPointDistance: 50, speedTime: 60 };
-
-        baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 100, radiusMax: 200, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
-
-        rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 20, radiusMax: 100 };
-        updateRotatorCircle();
-
-        rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 20, distanceMax: 133 };
-
-        resize();
+        resize(600);
     };
 };
 let windowMatchMedium = window.matchMedia("( min-width:632px ) and ( max-width: 969px )");
@@ -266,21 +252,7 @@ windowMatchMedium.addListener(windowMediumResize);
 
 windowLargeResize = windowMatchLarge => {
     if (windowMatchLarge.matches) {
-        canvasBase.width = 900;
-        canvasBase.height = 900;
-        canvasDrawing.width = 900;
-        canvasDrawing.height = 900;
-
-        defaultVals = { baseCircleRadius: 300, rotatorCircleRadius: 99, rotatingPointDistance: 75, speedTime: 60 };
-
-        baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
-
-        rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 30, radiusMax: 150 };
-        updateRotatorCircle();
-
-        rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 201 };
-
-        resize();
+        resize(900);
     };
 };
 let windowMatchLarge = window.matchMedia("(min-width: 970px)");
@@ -288,5 +260,5 @@ windowLargeResize(windowMatchLarge);
 windowMatchLarge.addListener(windowLargeResize);
 
 
-// Initialize app
+// Initialize app (redundant in case window.matchMedia is not triggered)
 initDrawing();
