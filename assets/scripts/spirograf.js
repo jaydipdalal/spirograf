@@ -13,16 +13,31 @@ let canvasDrawing = document.getElementById("display-canvas-drawing");
 let contextDrawing = canvasDrawing.getContext("2d");
 
 // Global shapes
-let defaultVals = { baseCircleRadius: 300, rotatorCircleRadius: 99, rotatingPointDistance: 75, speedTime: 60 };
-
-let baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: 150, radiusMax: 300, cx: canvasBase.width / 2, cy: canvasBase.height / 2 };
-
-let rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: 30, radiusMax: 150 };
+let defaultVals = {};
+let baseCircle = {};
+let rotatorCircle = {};
+// HELPER calculate and populate rotator circle properties
 updateRotatorCircle = () => rotatorCircle = { ...rotatorCircle, ...{ cx: baseCircle.cx + baseCircle.radius - rotatorCircle.radius, cy: baseCircle.cy } };
-updateRotatorCircle();
 
 // Global drawing point
-let rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: 30, distanceMax: 200 };
+let rotatingPoint = {};
+
+// HELPER set globals
+setGlobals = canvasSize => {
+    canvasBase.width = canvasSize;
+    canvasBase.height = canvasSize;
+    canvasDrawing.width = canvasSize;
+    canvasDrawing.height = canvasSize;
+
+    defaultVals = { baseCircleRadius: canvasSize / 3, rotatorCircleRadius: Math.ceil(canvasSize / 9) - 1, rotatingPointDistance: canvasSize / 12, speedTime: 60 };
+    baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: canvasSize / 6, radiusMax: canvasSize / 3, cx: canvasSize / 2, cy: canvasSize / 2 };
+    rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: canvasSize / 30, radiusMax: canvasSize / 6 };
+    updateRotatorCircle();
+    rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: canvasSize / 30, distanceMax: Math.floor(canvasSize / 4.5) };
+};
+setGlobals(900);
+
+// Global run controls
 let speed = { time: defaultVals.speedTime, timeMin: 10, timeMax: 120 };
 let color = backgroundCol;
 let time = 0;
@@ -191,22 +206,9 @@ drawLine = (context, toggleBegin = 0, srcX = false, srcY = false, destX, destY, 
 };
 
 
-// Resize responsive layout for canvases
-
+// HELPER resize responsive layout for canvas
 resize = canvasSize => {
-    canvasBase.width = canvasSize;
-    canvasBase.height = canvasSize;
-    canvasDrawing.width = canvasSize;
-    canvasDrawing.height = canvasSize;
-
-    defaultVals = { baseCircleRadius: canvasSize/3, rotatorCircleRadius: Math.ceil(canvasSize/9) - 1, rotatingPointDistance: canvasSize/12, speedTime: 60 };
-
-    baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: canvasSize/6, radiusMax: canvasSize/3, cx: canvasSize / 2, cy: canvasSize / 2 };
-
-    rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: canvasSize/30, radiusMax: canvasSize/6};
-    updateRotatorCircle();
-
-    rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: canvasSize/30, distanceMax: Math.floor(canvasSize/4.5) };
+    setGlobals(canvasSize);
 
     document.getElementsByClassName("options-content-value-1")[0].min = baseCircle.radiusMin;
     document.getElementsByClassName("options-content-value-1")[0].max = baseCircle.radiusMax;
@@ -231,6 +233,9 @@ resize = canvasSize => {
 
     initDrawing();
 };
+
+
+// Resize responsive layout for canvases
 
 windowSmallResize = windowMatchSmall => {
     if (windowMatchSmall.matches) {
