@@ -29,11 +29,11 @@ setGlobals = canvasSize => {
     canvasDrawing.width = canvasSize;
     canvasDrawing.height = canvasSize;
 
-    defaultVals = { baseCircleRadius: canvasSize / 3, rotatorCircleRadius: Math.ceil(canvasSize / 9) - 1, rotatingPointDistance: canvasSize / 12, speedTime: 60 };
+    defaultVals = { baseCircleRadius: canvasSize / 3, rotatorCircleRadius: Math.ceil(canvasSize / 9) - 1, rotatingPointRadius: canvasSize / 12, speedTime: 60 };
     baseCircle = { radius: defaultVals.baseCircleRadius, radiusMin: canvasSize / 6, radiusMax: canvasSize / 3, cx: canvasSize / 2, cy: canvasSize / 2 };
     rotatorCircle = { radius: defaultVals.rotatorCircleRadius, radiusMin: canvasSize / 30, radiusMax: canvasSize / 6 };
     updateRotatorCircle();
-    rotatingPoint = { distance: defaultVals.rotatingPointDistance, distanceMin: canvasSize / 30, distanceMax: Math.floor(canvasSize / 4.5) };
+    rotatingPoint = { radius: defaultVals.rotatingPointRadius, radiusMin: canvasSize / 30, radiusMax: Math.floor(canvasSize / 4.5) };
 };
 setGlobals(900);
 
@@ -53,7 +53,7 @@ initDrawing = () => {
     drawArc(contextBase, baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, textCol);
     drawArc(contextBase, rotatorCircle.cx, rotatorCircle.cy, rotatorCircle.radius, 0, textCol);
 
-    let rotatingPointX = rotatorCircle.cx + rotatingPoint.distance;
+    let rotatingPointX = rotatorCircle.cx + rotatingPoint.radius;
     let rotatingPointY = rotatorCircle.cy;
     drawLine(contextBase, 1, rotatorCircle.cx, rotatorCircle.cy, rotatingPointX, rotatingPointY, textCol);
     drawArc(contextBase, rotatingPointX, rotatingPointY, 3, textCol, textCol);
@@ -70,8 +70,8 @@ initDrawing = () => {
 startDrawing = () => {
     if (running) {
         let rotatorAngle = (((2 * Math.PI) / speed.time) * time++);
-        let rotatingPointX = rotatingPoint.distance * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
-        let rotatingPointY = 0 - rotatingPoint.distance * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+        let rotatingPointX = rotatingPoint.radius * Math.cos((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
+        let rotatingPointY = 0 - rotatingPoint.radius * Math.sin((baseCircle.radius - rotatorCircle.radius) / rotatorCircle.radius * rotatorAngle);
 
         contextBase.clearRect(0, 0, canvasBase.width, canvasBase.height);
         drawArc(contextBase, baseCircle.cx, baseCircle.cy, baseCircle.radius, 0, textCol);
@@ -113,7 +113,7 @@ reset = () => {
     stop();
     updateTextInput(defaultVals.baseCircleRadius, 'options-content-value-1');
     updateTextInput(defaultVals.rotatorCircleRadius, 'options-content-value-2');
-    updateTextInput(defaultVals.rotatingPointDistance, 'options-content-value-3');
+    updateTextInput(defaultVals.rotatingPointRadius, 'options-content-value-3');
     updateTextInput(defaultVals.speedTime, 'options-content-value-4');
     updateColor(backgroundCol);
     document.getElementsByClassName("display-canvas-base")[0].classList.remove("display-canvas-base-hidden");
@@ -145,10 +145,10 @@ updateTextInput = (val, type) => {
             break;
         case "options-content-value-3":
             valNum =
-                (valNum < rotatingPoint.distanceMin) ? rotatingPoint.distanceMin :
-                (valNum > rotatingPoint.distanceMax) ? rotatingPoint.distanceMax :
+                (valNum < rotatingPoint.radiusMin) ? rotatingPoint.radiusMin :
+                (valNum > rotatingPoint.radiusMax) ? rotatingPoint.radiusMax :
                 valNum;
-            rotatingPoint.distance = valNum;
+            rotatingPoint.radius = valNum;
             break;
         case "options-content-value-4":
             valNum =
@@ -210,26 +210,15 @@ drawLine = (context, toggleBegin = 0, srcX = false, srcY = false, destX, destY, 
 resize = canvasSize => {
     setGlobals(canvasSize);
 
-    document.getElementsByClassName("options-content-value-1")[0].min = baseCircle.radiusMin;
-    document.getElementsByClassName("options-content-value-1")[0].max = baseCircle.radiusMax;
-    document.getElementsByClassName("options-content-value-1")[0].value = baseCircle.radius;
-    document.getElementsByClassName("options-content-input-element-1")[0].min = baseCircle.radiusMin;
-    document.getElementsByClassName("options-content-input-element-1")[0].max = baseCircle.radiusMax;
-    document.getElementsByClassName("options-content-input-element-1")[0].value = baseCircle.radius;
-
-    document.getElementsByClassName("options-content-value-2")[0].min = rotatorCircle.radiusMin;
-    document.getElementsByClassName("options-content-value-2")[0].max = rotatorCircle.radiusMax;
-    document.getElementsByClassName("options-content-value-2")[0].value = rotatorCircle.radius;
-    document.getElementsByClassName("options-content-input-element-2")[0].min = rotatorCircle.radiusMin;
-    document.getElementsByClassName("options-content-input-element-2")[0].max = rotatorCircle.radiusMax;
-    document.getElementsByClassName("options-content-input-element-2")[0].value = rotatorCircle.radius;
-
-    document.getElementsByClassName("options-content-value-3")[0].min = rotatingPoint.distanceMin;
-    document.getElementsByClassName("options-content-value-3")[0].max = rotatingPoint.distanceMax;
-    document.getElementsByClassName("options-content-value-3")[0].value = rotatingPoint.distance;
-    document.getElementsByClassName("options-content-input-element-3")[0].min = rotatingPoint.distanceMin;
-    document.getElementsByClassName("options-content-input-element-3")[0].max = rotatingPoint.distanceMax;
-    document.getElementsByClassName("options-content-input-element-3")[0].value = rotatingPoint.distance;
+    let inputMappedToCircles = { 1: baseCircle, 2: rotatorCircle, 3: rotatingPoint };
+    for (mappedPair in inputMappedToCircles) {
+        document.getElementsByClassName("options-content-value-"+mappedPair.toString())[0].min = inputMappedToCircles[mappedPair].radiusMin;
+        document.getElementsByClassName("options-content-value-"+mappedPair.toString())[0].max = inputMappedToCircles[mappedPair].radiusMax;
+        document.getElementsByClassName("options-content-value-"+mappedPair.toString())[0].value = inputMappedToCircles[mappedPair].radius;
+        document.getElementsByClassName("options-content-input-element-"+mappedPair.toString())[0].min = inputMappedToCircles[mappedPair].radiusMin;
+        document.getElementsByClassName("options-content-input-element-"+mappedPair.toString())[0].max = inputMappedToCircles[mappedPair].radiusMax;
+        document.getElementsByClassName("options-content-input-element-"+mappedPair.toString())[0].value = inputMappedToCircles[mappedPair].radius;
+    };
 
     initDrawing();
 };
