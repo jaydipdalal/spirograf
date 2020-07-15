@@ -30,7 +30,7 @@ body {
     width: 90%;
     padding: .75em 0em;
     border: 1px solid $text-col;
-    border-radius: .25em;
+    border-radius: .1em;
     text-align: center;
     font-size: 1.75em;
 }
@@ -58,7 +58,7 @@ body {
     width: 90%;
     padding: .5em 0em;
     border: 1px solid $text-col;
-    border-radius: .5em;
+    border-radius: .1em;
     text-align: center;
     font-size: 1.25em;
 }
@@ -88,6 +88,7 @@ body {
 
 .options-content-button:hover {
     background-color: $element-selected-col;
+    cursor: pointer;
 }
 
 .options-content-button:focus {
@@ -130,6 +131,7 @@ body {
 
 .options-content-value-1:hover, .options-content-value-2:hover, .options-content-value-3:hover, .options-content-value-4:hover {
     background-color: $element-selected-col;
+    cursor: pointer;
 }
 
 .options-content-value-1:focus, .options-content-value-2:focus, .options-content-value-3:focus, .options-content-value-4:focus {
@@ -138,6 +140,10 @@ body {
 
 .options-content-input-element-1, .options-content-input-element-2, .options-content-input-element-3, .options-content-input-element-4  {
     margin: .75em 0em 0em;
+}
+
+.options-content-input-element-1:hover, .options-content-input-element-2:hover, .options-content-input-element-3:hover, .options-content-input-element-4:hover  {
+    cursor: pointer;
 }
 
 .options-content-container-3 {
@@ -164,6 +170,7 @@ body {
 
 .options-content-input-element-inline-1:hover {
     background-color: $element-selected-col;
+    cursor: pointer;
 }
 
 .options-content-input-element-inline-1:focus {
@@ -190,6 +197,7 @@ body {
 
 .options-button-download:hover, .options-button-toggle:hover {
     background-color: $element-selected-col;
+    cursor: pointer;
 }
 
 
@@ -207,7 +215,7 @@ body {
     width: 90%;
     padding: .5em 0em;
     border: 1px solid $text-col;
-    border-radius: .5em;
+    border-radius: .1em;
     text-align: center;
     font-size: 1.25em;
 }

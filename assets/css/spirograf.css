@@ -20,7 +20,7 @@ body {
   width: 90%;
   padding: .75em 0em;
   border: 1px solid #CFE0F9;
-  border-radius: .25em;
+  border-radius: .1em;
   text-align: center;
   font-size: 1.75em; }
 
@@ -43,7 +43,7 @@ body {
   width: 90%;
   padding: .5em 0em;
   border: 1px solid #CFE0F9;
-  border-radius: .5em;
+  border-radius: .1em;
   text-align: center;
   font-size: 1.25em; }
 
@@ -68,7 +68,8 @@ body {
   font-size: 1em; }
 
 .options-content-button:hover {
-  background-color: #4D638C; }
+  background-color: #4D638C;
+  cursor: pointer; }
 
 .options-content-button:focus {
   outline: none; }
@@ -101,13 +102,17 @@ body {
   border-radius: .5em; }
 
 .options-content-value-1:hover, .options-content-value-2:hover, .options-content-value-3:hover, .options-content-value-4:hover {
-  background-color: #4D638C; }
+  background-color: #4D638C;
+  cursor: pointer; }
 
 .options-content-value-1:focus, .options-content-value-2:focus, .options-content-value-3:focus, .options-content-value-4:focus {
   outline: none; }
 
 .options-content-input-element-1, .options-content-input-element-2, .options-content-input-element-3, .options-content-input-element-4 {
   margin: .75em 0em 0em; }
+
+.options-content-input-element-1:hover, .options-content-input-element-2:hover, .options-content-input-element-3:hover, .options-content-input-element-4:hover {
+  cursor: pointer; }
 
 .options-content-container-3 {
   background-color: #283654;
@@ -130,7 +135,8 @@ body {
   text-align: right; }
 
 .options-content-input-element-inline-1:hover {
-  background-color: #4D638C; }
+  background-color: #4D638C;
+  cursor: pointer; }
 
 .options-content-input-element-inline-1:focus {
   outline: none; }
@@ -152,7 +158,8 @@ body {
   text-decoration: none; }
 
 .options-button-download:hover, .options-button-toggle:hover {
-  background-color: #4D638C; }
+  background-color: #4D638C;
+  cursor: pointer; }
 
 .display-panel {
   display: flex;
@@ -167,7 +174,7 @@ body {
   width: 90%;
   padding: .5em 0em;
   border: 1px solid #CFE0F9;
-  border-radius: .5em;
+  border-radius: .1em;
   text-align: center;
   font-size: 1.25em; }
 
