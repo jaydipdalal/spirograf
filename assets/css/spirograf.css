@@ -144,6 +144,7 @@ body {
 .options-content-container-4 {
   display: flex;
   justify-content: center;
+  width: 75%;
   padding: 3em 0em 0em; }
 
 .options-button-download, .options-button-toggle {

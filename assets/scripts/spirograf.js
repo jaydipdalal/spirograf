@@ -118,6 +118,7 @@ reset = () => {
     updateColor(backgroundCol);
     document.getElementsByClassName("display-canvas-base")[0].classList.remove("display-canvas-base-hidden");
     document.getElementsByClassName("display-canvas-drawing")[0].classList.remove("display-canvas-drawing-no-transparent");
+    document.getElementsByClassName("options-button-toggle")[0].innerHTML = "HIDE CIRCLES";
 };
 
 
@@ -175,8 +176,13 @@ updateColor = newColor => {
 
 // Toggle visibility of base canvas
 toggleCircles = () => {
+    event.preventDefault();
     document.getElementsByClassName("display-canvas-base")[0].classList.toggle("display-canvas-base-hidden");
     document.getElementsByClassName("display-canvas-drawing")[0].classList.toggle("display-canvas-drawing-no-transparent");
+    document.getElementsByClassName("options-button-toggle")[0].innerHTML = 
+        document.getElementsByClassName("options-button-toggle")[0].innerHTML === "HIDE CIRCLES"
+        ? "SHOW CIRCLES"
+        : "HIDE CIRCLES";
 };
 
 
