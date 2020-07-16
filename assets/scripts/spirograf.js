@@ -129,46 +129,28 @@ resetToggle = () => {
 
 // Update variable properties
 
-updateTextInput = (val, type) => {
+updateTextInput = (val, input) => {
     let valNum = parseInt(val);
-    
-    switch(type) {
-        case "options-content-value-1":
-            valNum =
-                (valNum < baseCircle.radiusMin) ? baseCircle.radiusMin :
-                (valNum > baseCircle.radiusMax) ? baseCircle.radiusMax :
-                valNum;
-            baseCircle.radius = valNum;
-            updateRotatorCircle();
-            break;
-        case "options-content-value-2":
-            valNum =
-                (valNum < rotatorCircle.radiusMin) ? rotatorCircle.radiusMin :
-                (valNum > rotatorCircle.radiusMax) ? rotatorCircle.radiusMax :
-                valNum;
-            rotatorCircle.radius = valNum;
-            updateRotatorCircle();
-            break;
-        case "options-content-value-3":
-            valNum =
-                (valNum < rotatingPoint.radiusMin) ? rotatingPoint.radiusMin :
-                (valNum > rotatingPoint.radiusMax) ? rotatingPoint.radiusMax :
-                valNum;
-            rotatingPoint.radius = valNum;
-            break;
-        case "options-content-value-4":
-            valNum =
-                (valNum < speed.timeMin) ? speed.timeMin :
-                (valNum > speed.timeMax) ? speed.timeMax :
-                valNum;
-            speed.time = valNum;
-            break;
-        default:
-            null;
+    let inputNum = parseInt(input.slice(-1));
+
+    let inputMappedToCircles = { 1: baseCircle, 2: rotatorCircle, 3: rotatingPoint };
+    if ([1, 2, 3].includes(inputNum)) {
+        valNum =
+            (valNum < inputMappedToCircles[inputNum].radiusMin) ? inputMappedToCircles[inputNum].radiusMin :
+            (valNum > inputMappedToCircles[inputNum].radiusMax) ? inputMappedToCircles[inputNum].radiusMax :
+            valNum;
+        inputMappedToCircles[inputNum].radius = valNum;
+        if ([1, 2].includes(inputNum)) { updateRotatorCircle(); };
+    } else {
+        valNum =
+            (valNum < speed.timeMin) ? speed.timeMin :
+            (valNum > speed.timeMax) ? speed.timeMax :
+            valNum;
+        speed.time = valNum;
     };
 
-    document.getElementsByClassName(type)[0].value = valNum;
-    document.getElementsByClassName("options-content-input-element-" + type.slice(-1))[0].value = valNum;
+    document.getElementsByClassName(input)[0].value = valNum;
+    document.getElementsByClassName("options-content-input-element-" + input.slice(-1))[0].value = valNum;
 
     initDrawing();
 };
