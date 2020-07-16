@@ -116,6 +116,11 @@ reset = () => {
     updateTextInput(defaultVals.rotatingPointRadius, 'options-content-value-3');
     updateTextInput(defaultVals.speedTime, 'options-content-value-4');
     updateColor(backgroundCol);
+    resetToggle();
+};
+
+// HELPER reset show/hide circles toggle button
+resetToggle = () => {
     document.getElementsByClassName("display-canvas-base")[0].classList.remove("display-canvas-base-hidden");
     document.getElementsByClassName("display-canvas-drawing")[0].classList.remove("display-canvas-drawing-no-transparent");
     document.getElementsByClassName("options-button-toggle")[0].innerHTML = "HIDE CIRCLES";
@@ -226,6 +231,7 @@ resize = canvasSize => {
         document.getElementsByClassName("options-content-input-element-"+mappedPair.toString())[0].value = inputMappedToCircles[mappedPair].radius;
     };
 
+    resetToggle();
     initDrawing();
 };
 
