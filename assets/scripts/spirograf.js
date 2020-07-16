@@ -231,42 +231,21 @@ resize = canvasSize => {
 
 
 // Resize responsive layout for canvases
-
-windowMiniResize = windowMatchMini => {
-    if (windowMatchMini.matches) {
-        resize(270);
-    };
+let listenerMini, listenerSmall, listenerMedium, listenerLarge;
+let windowMatches = {
+    1: ["(max-width: 366px)", 270, listenerMini],
+    2: ["(min-width:367px) and (max-width: 631px)", 300, listenerSmall],
+    3: ["(min-width:632px) and (max-width: 969px)", 600, listenerMedium],
+    4: ["(min-width: 970px)", 900, listenerLarge]
 };
-let windowMatchMini = window.matchMedia("( max-width: 366px )");
-windowMiniResize(windowMatchMini);
-windowMatchMini.addListener(windowMiniResize);
-
-windowSmallResize = windowMatchSmall => {
-    if (windowMatchSmall.matches) {
-        resize(300);
-    };
+for ( windowMatch in windowMatches ) {
+    let newSize = windowMatches[windowMatch][1];
+    
+    windowMatches[windowMatch][2] = window.matchMedia(windowMatches[windowMatch][0]);
+    if (windowMatches[windowMatch][2].matches) { resize(newSize); };
+    
+    windowMatches[windowMatch][2].addListener( windowMatch => { if (windowMatch.matches) { resize(newSize); }; });
 };
-let windowMatchSmall = window.matchMedia("( min-width:367px ) and (max-width: 631px)");
-windowSmallResize(windowMatchSmall);
-windowMatchSmall.addListener(windowSmallResize);
-
-windowMediumResize = windowMatchMedium => {
-    if (windowMatchMedium.matches) {
-        resize(600);
-    };
-};
-let windowMatchMedium = window.matchMedia("( min-width:632px ) and ( max-width: 969px )");
-windowMediumResize(windowMatchMedium);
-windowMatchMedium.addListener(windowMediumResize);
-
-windowLargeResize = windowMatchLarge => {
-    if (windowMatchLarge.matches) {
-        resize(900);
-    };
-};
-let windowMatchLarge = window.matchMedia("(min-width: 970px)");
-windowLargeResize(windowMatchLarge);
-windowMatchLarge.addListener(windowLargeResize);
 
 
 // Initialize app (redundant in case window.matchMedia is not triggered)
