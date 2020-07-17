@@ -49,20 +49,16 @@ The interface is designed to be clean, simple, and intuitive. With the goal of s
 
 ***
 
-## Examples
-
-### Figure Generation
+## Example: Figure Generation
 
 <br />
 <img src="./assets/images/readme/spirograf_running.gif" align="center" />
 <br />
 
-### Resulting Figures
+## Example: Resulting Figures
 
 <br />
-<img src="./assets/images/readme/spirograf_resultFigure1.png" align="center" />
-<img src="./assets/images/readme/spirograf_resultFigure2.png" align="center" />
-<img src="./assets/images/readme/spirograf_resultFigure3.png" align="center" />
+<img src="./assets/images/readme/spirograf_resultFigure.gif" align="center" />
 <br />
 
 ***
